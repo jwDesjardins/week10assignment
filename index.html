@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Week 10 Coding Assignment</title>
+
+  <!-- Including Bootstrap CDNs for CSS and JavaScript. -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- Additional CSS styles to enhance the look of the page. -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 800px;
+      margin-top: 50px;
+      border-radius: 15px;
+      background-color: #ffffff;
+      padding: 20px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #6c757d;
+    }
+
+    /* Adding some styling for the footer. */
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+      color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+  <!-- Container containing the form and the table. -->
+  <div class="container">
+
+    <!-- Form to add students. -->
+    <h2>PROMINEO TECH 2023</h2>
+    <form id="add-student-form">
+      <div class="form-group">
+        <label for="name">Student Name:</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" id="age" required>
+      </div>
+      <div class="form-group">
+        <label for="class">Class:</label>
+        <input type="text" class="form-control" id="class" required>
+      </div>
+      <button type="submit" class="btn btn-primary">submit</button>
+    </form>
+
+    <!-- Table to display existing students. -->
+    <h2 class="mt-5">Students</h2>
+    <table class="table" id="students-table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Student Name</th>
+          <th>Age</th>
+          <th>Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows will be added here by the JavaScript. -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer indicating the creator of the page. -->
+  <footer>
+    Week 10: Coding Assignment by "Jean Wilkens Desjardins"
+  </footer>
+
+  <!-- JavaScript code to handle the form submission. -->
+  <script>
+    // Add an event listener for the 'submit' event of the form.
+    document.getElementById('add-student-form').addEventListener('submit', function(event) {
+      // Prevent the normal submission of the form.
+      event.preventDefault();
+
+      // Get the values of the form fields.
+      var name = document.getElementById('name').value;
+      var age = document.getElementById('age').value;
+      var className = document.getElementById('class').value;
+
+      // Create a new row and new cells.
+      var newRow = document.createElement('tr');
+      var nameCell = document.createElement('td');
+      var ageCell = document.createElement('td');
+      var classCell = document.createElement('td');
+
+      // Set the text of the cells.
+      nameCell.textContent = name;
+      ageCell.textContent = age;
+      classCell.textContent = className;
+
+      // Add the cells to the new row.
+      newRow.appendChild(nameCell);
+      newRow.appendChild(ageCell);
+      newRow.appendChild(classCell);
+
+      // Add the new row to the table.
+      document.getElementById('students-table').querySelector('tbody').appendChild(newRow);
+
+      // Clear the form fields.
+      document.getElementById('name').value = '';
+      document.getElementById('age').value = '';
+      document.getElementById('class').value = '';
+    });
+  </script>
+</body>
+</html>
